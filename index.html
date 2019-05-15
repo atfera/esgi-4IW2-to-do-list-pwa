@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>To-do-list PWA</title>
+  <link rel="stylesheet" href="/styles/bootstrap.min.css">
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #e3f2fd;">
+    <div class="container">
+      <a class="navbar-brand" href="#">To do list</a>
+
+      <ul class="my-2 my-lg-0">
+        <button type="button" data-toggle="modal" data-target="#addTaskModal"
+          class="btn btn-outline-success my-2 my-sm-0">Add </button>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container mt-5 pt-5">
+    <div class="col-12 margin-top">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Task</th>
+            <th scope="col">Status</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="tasks"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="modal fade" id="addTaskModal" tabindex="-1" role="dialog" aria-labelledby="addTaskModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form id="addTask">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addTaskModalLabel">Add Task</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="task">Task</label>
+              <input required type="text" class="form-control" id="task" aria-describedby="taskHelp" placeholder="Enter task">
+            </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <input required type="text" class="form-control" id="description" aria-describedby="descriptionHelp"
+                placeholder="Enter description">
+            </div>
+            <div class="form-group">
+              <label for="datepicker">Deadline</label>
+              <input id="datepicker" type="date" />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <input type="submit" class="btn btn-primary" value="Add">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="editTaskModal" tabindex="-1" role="dialog" aria-labelledby="editTaskModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form id="editTaskForm">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editTaskModalLabel">Edit Task</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="editTask">Task</label>
+              <input type="hidden" id="taskId">
+              <input type="hidden" id="idDone">
+              <input required type="text" class="form-control" id="editTask" aria-describedby="taskHelp"
+                placeholder="Enter task">
+            </div>
+            <div class="form-group">
+              <label for="editDescription">Description</label>
+              <input required type="text" class="form-control" id="editDescription" aria-describedby="descriptionHelp"
+                placeholder="Enter description">
+            </div>
+            <div class="form-group">
+              <label for="editDatePicker">Deadline</label>
+              <input id="editDatePicker" type="date" />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <input type="submit" class="btn btn-success" value="Edit">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/assets/jquery-3.3.1.slim.min.js"></script>
+  <script src="/js/assets/bootstrap.min.js"></script>
+
+  <script src="/js/assets/moment.min.js"></script>
+
+  <script type="module" src="/js/app.js" async></script>
+  <script nomodule>
+    const script = document.createElement('script');
+    script.src = '/js/components/task/task.js';
+    document.head.appendChild(script);
+  </script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('/service-worker.js', {
+          scope: '/',
+        });
+      });
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "To-do-list",
+  "short_name": "todo",
+  "description": "To do list PWA !",
+  "start_url": "/?pwa",
+  "display": "standalone",
+  "theme_color": "#111111",
+  "background_color": "#ffffff"
+}

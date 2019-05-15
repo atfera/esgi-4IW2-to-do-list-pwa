@@ -1,0 +1,21 @@
+{
+  "name": "to-do-list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "generate": "npx workbox generateSW",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ferhat Attar",
+  "license": "MIT",
+  "devDependencies": {
+    "polymer-cli": "^1.9.8",
+    "workbox-cli": "^4.2.0"
+  },
+  "dependencies": {
+    "@polymer/lit-element": "^0.7.1",
+    "idb": "^4.0.3",
+    "lit-element": "^2.1.0"
+  }
+}
