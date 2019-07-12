@@ -10,7 +10,7 @@
   "author": "Ferhat Attar",
   "license": "MIT",
   "devDependencies": {
-    "polymer-cli": "^1.9.8",
+    "polymer-cli": "^1.9.11",
     "workbox-cli": "^4.2.0"
   },
   "dependencies": {
